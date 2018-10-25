@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LANPlay-Server", "LANPlay-Server\LANPlay-Server.csproj", "{87CAAB90-D8B7-4537-AB87-0D89EB194016}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LANPlay-Client", "LANPlay-Client\LANPlay-Client.csproj", "{57F1BB20-D680-4331-8881-FB42CF9AEB81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87CAAB90-D8B7-4537-AB87-0D89EB194016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87CAAB90-D8B7-4537-AB87-0D89EB194016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87CAAB90-D8B7-4537-AB87-0D89EB194016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87CAAB90-D8B7-4537-AB87-0D89EB194016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57F1BB20-D680-4331-8881-FB42CF9AEB81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57F1BB20-D680-4331-8881-FB42CF9AEB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57F1BB20-D680-4331-8881-FB42CF9AEB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57F1BB20-D680-4331-8881-FB42CF9AEB81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {157CE40C-6BC3-4346-8D7B-498596F354E4}
+	EndGlobalSection
+EndGlobal
