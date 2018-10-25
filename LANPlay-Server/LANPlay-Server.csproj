@@ -66,6 +66,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Client.cs" />
     <Compile Include="WdServer.xaml.cs">
       <DependentUpon>WdServer.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using TLib.Software;
 using TLib.Windows;
-
 namespace LANPlay_Server
 {
     /// <summary>
@@ -25,10 +15,15 @@ namespace LANPlay_Server
         public WdServer()
         {
             InitializeComponent();
+            Serializer serializer = new Serializer(this, "WdServer", new List<string>() { "Clients" });
         }
+
+        public List<Client> Clients { get; set; }
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Clients.Add(new Client());
             var udp = new UdpClient(800);
             Task.Run(async () =>
             {
@@ -47,5 +42,7 @@ namespace LANPlay_Server
                 }
             });
         }
+
     }
+
 }
