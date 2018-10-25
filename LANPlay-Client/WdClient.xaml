@@ -7,11 +7,9 @@
         mc:Ignorable="d"
         Title="WdClient" Height="450" Width="800" Loaded="Window_Loaded">
     <Canvas>
-
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="40" Canvas.Top="48" >IP</TextBlock>
         <TextBox Name="TbIP"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="127.0.0.1" VerticalAlignment="Center" TextChanged="TbIP_TextChanged" Height="38" Width="110" Canvas.Left="82" Canvas.Top="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
         <CheckBox Name="CkbHook" Content="拦截键盘" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="40" Canvas.Top="128"  Click="CkbHook_Click"   ></CheckBox>
         <Button Name="BtnBlack" Height="57" Width="152" Canvas.Left="40" Canvas.Top="180" Click="BtnBlack_Click">黑屏</Button>
-
     </Canvas>
 </Window>

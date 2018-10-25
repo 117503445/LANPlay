@@ -15,10 +15,11 @@ namespace LANPlay_Client
         public WdMain()
         {
             InitializeComponent();
-            
+            Serializer serializer = new Serializer(this, "WdClient.xml", new List<string>() { "IPstr", "IsHoldKey" });
         }
-        public static string ip { get; set; } = "127.0.0.1";
-        public static bool IsHoldKey { get; set; } = false;
+
+        public string IPstr { get; set; } = "127.0.0.1";
+        public bool IsHoldKey { get; set; } = false;
 
 
         UdpClient udp = new UdpClient(801);
@@ -27,29 +28,27 @@ namespace LANPlay_Client
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-            
-
             keyboardHook = new KeyboardHook();
-            //keyboardHook.SetHook();
             keyboardHook.KeyUp += KeyboardHook_OnKeyUp;
             keyboardHook.KeyDown += KeyboardHook_OnKeyDown;
 
-            TbIP.Text = ip;
-            iP = new IPEndPoint(IPAddress.Parse(ip), 800);
+            TbIP.Text = IPstr;
+            iP = new IPEndPoint(IPAddress.Parse(IPstr), 800);
 
             CkbHook.IsChecked = IsHoldKey;
             keyboardHook.IsHoldKey = IsHoldKey;
 
-            Serializer serializer = new Serializer(this, "WdClient.xml", new List<string>() { "ip", "IsHoldKey" });
+
         }
-        
+
         private void KeyboardHook_OnKeyDown(object sender, KeyboardHookEventArgs e)
         {
+            return;
             udp.Send(new byte[] { 0, (byte)Convert.ToInt32(e.key) }, 2, iP);
         }
         private void KeyboardHook_OnKeyUp(object sender, KeyboardHookEventArgs e)
         {
+            return;
             udp.Send(new byte[] { 1, (byte)Convert.ToInt32(e.key) }, 2, iP);
             Console.WriteLine(e.key);
         }
@@ -58,18 +57,16 @@ namespace LANPlay_Client
         {
             if (TbIP.Text != "127.0.0.1")
             {
-               
                 try
                 {
-                    iP = new IPEndPoint((long.Parse(ip)), 800);
-                    ip = TbIP.Text;
+                    iP = new IPEndPoint((IPAddress.Parse(TbIP.Text)), 800);
+                    IPstr = TbIP.Text;
                 }
                 catch (Exception)
                 {
-
                     //throw;
                 }
-                
+
             }
         }
 
