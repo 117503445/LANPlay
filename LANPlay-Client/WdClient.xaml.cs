@@ -18,12 +18,12 @@ namespace LANPlay_Client
             Serializer serializer = new Serializer(this, "WdClient.xml", new List<string>() { "IPstr", "IsHoldKey" });
         }
 
-        public string IPstr { get; set; } = "127.0.0.1";
+        public static string IPstr { get; set; } = "127.0.0.1";
         public bool IsHoldKey { get; set; } = false;
 
 
         UdpClient udp = new UdpClient(801);
-        IPEndPoint iP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 800);
+        IPEndPoint iP = new IPEndPoint(IPAddress.Parse(IPstr), 800);
         KeyboardHook keyboardHook;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -43,14 +43,11 @@ namespace LANPlay_Client
 
         private void KeyboardHook_OnKeyDown(object sender, KeyboardHookEventArgs e)
         {
-            return;
             udp.Send(new byte[] { 0, (byte)Convert.ToInt32(e.key) }, 2, iP);
         }
         private void KeyboardHook_OnKeyUp(object sender, KeyboardHookEventArgs e)
         {
-            return;
             udp.Send(new byte[] { 1, (byte)Convert.ToInt32(e.key) }, 2, iP);
-            Console.WriteLine(e.key);
         }
 
         private void TbIP_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
