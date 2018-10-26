@@ -20,7 +20,6 @@ namespace LANPlay_Client
         public byte ID { get; set; } = 0;
         public bool IsHoldKey { get; set; } = false;
 
-
         UdpClient udp = new UdpClient(801);
         KeyboardHook keyboardHook;
 

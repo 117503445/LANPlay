@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TLib.Software;
+using TLib.Windows;
+
 namespace LANPlay_Server
 {
     /// <summary>
@@ -17,13 +18,9 @@ namespace LANPlay_Server
             InitializeComponent();
             Serializer serializer = new Serializer(this, "WdServer.xml", new List<string>() { "Clients" });
         }
-
         public List<Client> Clients { get; set; } = new List<Client>();
-
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //Clients.Add(new Client() { ID = 1, Keys = new List<byte>() { 36 } });
             var udp = new UdpClient(800);
             Task.Run(async () =>
             {
@@ -41,12 +38,11 @@ namespace LANPlay_Server
                                     Key sendKey = (Key)result.Buffer[2];
                                     if (result.Buffer[1] == 0)
                                     {
-                                        Console.WriteLine("I received" + key);
-                                        //KeyboardSimulation.Press(sendKey);
+                                        KeyboardSimulation.Press(sendKey);
                                     }
                                     else
                                     {
-                                        //KeyboardSimulation.Release(sendKey);
+                                        KeyboardSimulation.Release(sendKey);
                                     }
                                     break;
                                 }
@@ -57,7 +53,5 @@ namespace LANPlay_Server
                 }
             });
         }
-
     }
-
 }
