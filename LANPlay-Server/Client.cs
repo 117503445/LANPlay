@@ -4,7 +4,8 @@ namespace LANPlay_Server
 {
     public class Client
     {
-        public string Name { get; set; } = "";
+        public byte ID { get; set; }
         public List<byte> Keys { get; set; } = new List<byte>();
+
     }
 }
