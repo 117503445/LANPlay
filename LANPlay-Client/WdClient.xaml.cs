@@ -16,7 +16,30 @@ namespace LANPlay_Client
             InitializeComponent();
             Serializer serializer = new Serializer(this, "WdClient.xml", new List<string>() { nameof(IP), nameof(ID), nameof(IsHoldKey) });
         }
-        public string IP { get; set; } = "127.0.0.1";
+        private string ip = "127.0.0.1";
+        public string IP
+        {
+            get { return ip; }
+            set
+            {
+                bool b = true;
+                if (value.Split('.').Length != 4) { b = false; }
+                if (value[value.Length - 1] != '.') { b = false; }
+                for (int i = 0; i < value.Length; i++)
+                {
+                    char c = value[i];
+                    if (c < '0' && c > '9' && c != '.')
+                    {
+                        b = false;
+                        break;
+                    }
+                }
+                if (b)
+                {
+                    ip = value;
+                }
+            }
+        }
         public byte ID { get; set; } = 0;
         public bool IsHoldKey { get; set; } = false;
 
@@ -28,14 +51,9 @@ namespace LANPlay_Client
             keyboardHook = new KeyboardHook();
             keyboardHook.KeyUp += KeyboardHook_OnKeyUp;
             keyboardHook.KeyDown += KeyboardHook_OnKeyDown;
-
             TbIP.Text = IP;
-            TbID.Text = ID.ToString();
-
             CkbHook.IsChecked = IsHoldKey;
             keyboardHook.IsHoldKey = IsHoldKey;
-
-
         }
 
         private void KeyboardHook_OnKeyDown(object sender, KeyboardHookEventArgs e)
@@ -70,21 +88,6 @@ namespace LANPlay_Client
             {
                 IsHoldKey = (bool)CkbHook.IsChecked;
                 keyboardHook.IsHoldKey = (bool)CkbHook.IsChecked;
-            }
-        }
-
-        private void TbID_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            if (TbID.Text != "0")
-            {
-                try
-                {
-                    ID = byte.Parse(TbID.Text);
-                }
-                catch (Exception)
-                {
-
-                }
             }
         }
     }

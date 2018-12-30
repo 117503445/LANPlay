@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,7 +19,6 @@ namespace LANPlay_Server
             InitializeComponent();
             Serializer serializer = new Serializer(this, "WdServer.xml", new List<string>() { "Clients" });
         }
-        public List<Client> Clients { get; set; } = new List<Client>();
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var udp = new UdpClient(800);
@@ -27,28 +27,15 @@ namespace LANPlay_Server
                 while (true)
                 {
                     var result = await udp.ReceiveAsync();
-                    foreach (var Client in Clients)
+                    Key sendKey = (Key)result.Buffer[2];
+                    if (result.Buffer[1] == 0)
                     {
-                        if (Client.ID == result.Buffer[0])
-                        {
-                            foreach (var key in Client.Keys)
-                            {
-                                if (key == result.Buffer[2])
-                                {
-                                    Key sendKey = (Key)result.Buffer[2];
-                                    if (result.Buffer[1] == 0)
-                                    {
-                                        KeyboardSimulation.Press(sendKey);
-                                    }
-                                    else
-                                    {
-                                        KeyboardSimulation.Release(sendKey);
-                                    }
-                                    break;
-                                }
-                            }
-                            break;
-                        }
+                        KeyboardSimulation.Press(sendKey);
+                        Console.WriteLine(sendKey);
+                    }
+                    else
+                    {
+                        KeyboardSimulation.Release(sendKey);
                     }
                 }
             });

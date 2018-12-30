@@ -9,10 +9,8 @@
     <Canvas>
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="40" Canvas.Top="48" >IP</TextBlock>
         <TextBox Name="TbIP"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="127.0.0.1" VerticalAlignment="Center" TextChanged="TbIP_TextChanged" Height="38" Width="110" Canvas.Left="71" Canvas.Top="37" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-        <CheckBox Name="CkbHook" Content="拦截键盘" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="58" Canvas.Top="222"  Click="CkbHook_Click"   ></CheckBox>
+        <CheckBox Name="CkbHook" Content="拦截键盘" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="71" Canvas.Top="168"  Click="CkbHook_Click"   ></CheckBox>
         <Button Name="BtnBlack" Height="57" Width="152" Canvas.Left="29" Canvas.Top="291" Click="BtnBlack_Click">黑屏</Button>
         <ListBox Name="LstInfo" Height="311" Canvas.Left="262" Canvas.Top="37" Width="472"/>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="40" Canvas.Top="114" ><Run Text="ID"/></TextBlock>
-        <TextBox x:Name="TbID"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" TextChanged="TbID_TextChanged" Height="38" Width="110" Canvas.Left="71" Canvas.Top="103" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
     </Canvas>
 </Window>
