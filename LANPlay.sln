@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2046
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28721.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LANPlay-Server", "LANPlay-Server\LANPlay-Server.csproj", "{87CAAB90-D8B7-4537-AB87-0D89EB194016}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenShare-Server", "ScreenShare-Server\ScreenShare-Server.csproj", "{D61B02EE-6D83-490E-A6AC-B7E4476EFA16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LANPlay-Client", "LANPlay-Client\LANPlay-Client.csproj", "{57F1BB20-D680-4331-8881-FB42CF9AEB81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenShare-Client", "ScreenShare-Client\ScreenShare-Client.csproj", "{1DDF6DE0-841B-4730-9124-9A06C3E02CFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySend-Server", "KeySend-Server\KeySend-Server.csproj", "{27C43EE7-181C-4ED1-9221-0C228701BF14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySend-Client", "KeySend-Client\KeySend-Client.csproj", "{B24C58C3-6015-4704-80D8-78BC0167B4A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +17,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{87CAAB90-D8B7-4537-AB87-0D89EB194016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87CAAB90-D8B7-4537-AB87-0D89EB194016}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87CAAB90-D8B7-4537-AB87-0D89EB194016}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87CAAB90-D8B7-4537-AB87-0D89EB194016}.Release|Any CPU.Build.0 = Release|Any CPU
-		{57F1BB20-D680-4331-8881-FB42CF9AEB81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57F1BB20-D680-4331-8881-FB42CF9AEB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57F1BB20-D680-4331-8881-FB42CF9AEB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57F1BB20-D680-4331-8881-FB42CF9AEB81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D61B02EE-6D83-490E-A6AC-B7E4476EFA16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D61B02EE-6D83-490E-A6AC-B7E4476EFA16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D61B02EE-6D83-490E-A6AC-B7E4476EFA16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D61B02EE-6D83-490E-A6AC-B7E4476EFA16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DDF6DE0-841B-4730-9124-9A06C3E02CFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DDF6DE0-841B-4730-9124-9A06C3E02CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DDF6DE0-841B-4730-9124-9A06C3E02CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DDF6DE0-841B-4730-9124-9A06C3E02CFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27C43EE7-181C-4ED1-9221-0C228701BF14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27C43EE7-181C-4ED1-9221-0C228701BF14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27C43EE7-181C-4ED1-9221-0C228701BF14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27C43EE7-181C-4ED1-9221-0C228701BF14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B24C58C3-6015-4704-80D8-78BC0167B4A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B24C58C3-6015-4704-80D8-78BC0167B4A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B24C58C3-6015-4704-80D8-78BC0167B4A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B24C58C3-6015-4704-80D8-78BC0167B4A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {157CE40C-6BC3-4346-8D7B-498596F354E4}
+		SolutionGuid = {E9B0B969-F223-4FB9-859A-0C0B994DAD1D}
 	EndGlobalSection
 EndGlobal
