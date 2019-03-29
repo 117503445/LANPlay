@@ -17,17 +17,18 @@ namespace ScreenShare_Client
         public MainForm()
         {
             InitializeComponent();
-            
+            CheckForIllegalCrossThreadCalls = false;
             int sort = 900;
             UdpClient client = new UdpClient(sort);
-           
+
             Task.Run(async () =>
             {
                 while (true)
                 {
                     var result = await client.ReceiveAsync();
-                    Console.WriteLine(result.RemoteEndPoint.Address);
+                    Text = "ScreenShare-Client " + result.RemoteEndPoint.Address;
                     var s = Encoding.Default.GetString(result.Buffer);
+                    Console.WriteLine(s);
                     AxRDPViewer.Connect(s, Environment.UserName, "");
                     AxRDPViewer.SmartSizing = true;
                 }

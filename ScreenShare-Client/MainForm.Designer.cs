@@ -39,6 +39,7 @@
             this.AxRDPViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AxRDPViewer.Enabled = true;
             this.AxRDPViewer.Location = new System.Drawing.Point(0, 0);
+            this.AxRDPViewer.Margin = new System.Windows.Forms.Padding(0);
             this.AxRDPViewer.Name = "AxRDPViewer";
             this.AxRDPViewer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("AxRDPViewer.OcxState")));
             this.AxRDPViewer.Size = new System.Drawing.Size(933, 637);

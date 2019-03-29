@@ -19,9 +19,10 @@ namespace ScreenShare_Server
         public MainForm()
         {
             InitializeComponent();
+
             var rdp = new RDPSession();
             rdp.OnAttendeeConnected += Rdp_OnAttendeeConnected;
-            rdp.Open(); // 打开会话
+            rdp.Open();
             invitation = rdp.Invitations.CreateInvitation("117503445", "CastGroup", "", 64);
 
             string path = "Ips.txt";
@@ -31,20 +32,16 @@ namespace ScreenShare_Server
             }
             else
             {
-                //File.WriteAllText(path, "");
                 File.Create(path).Dispose();
             }
 
-
-            for (int i = 0; i < Program.Ips.Count; i++)
-            {
-                //TODO:Change
-            }
             foreach (var ip in Program.Ips)
             {
-                Text += " " + ip;
+                if (ip[0] != '#')
+                {
+                    Text += " " + ip;
+                }
             }
-
         }
 
         private readonly UdpClient Udp = new UdpClient(901);
@@ -53,11 +50,12 @@ namespace ScreenShare_Server
         {
             IRDPSRAPIAttendee pAttendee = pObjAttendee as IRDPSRAPIAttendee;
             pAttendee.ControlLevel = CTRL_LEVEL.CTRL_LEVEL_VIEW;
-            Console.WriteLine("Attendee Connected: " + pAttendee.RemoteName + Environment.NewLine);
+            Console.WriteLine("Attendee Connected: " + pAttendee.RemoteName);
         }
 
         private void BtnCast_Click(object sender, EventArgs e)
         {
+            
             foreach (var ip in Program.Ips)
             {
                 if (ip[0] == '#')
