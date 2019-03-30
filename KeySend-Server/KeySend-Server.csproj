@@ -103,4 +103,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>rmdir /s/q "$(SolutionDir)bin\$(ConfigurationName)\$(ProjectName)"
+mkdir "$(SolutionDir)bin\$(ConfigurationName)\$(ProjectName)"
+xcopy "$(ProjectDir)bin\$(ConfigurationName)" "$(SolutionDir)bin\$(ConfigurationName)\$(ProjectName)"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

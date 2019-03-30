@@ -99,6 +99,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)bin\$(ConfigurationName)" "$(SolutionDir)Output\KeySend-Client"</PostBuildEvent>
+    <PostBuildEvent>rmdir /s/q "$(SolutionDir)bin\$(ConfigurationName)\$(ProjectName)"
+mkdir "$(SolutionDir)bin\$(ConfigurationName)\$(ProjectName)"
+xcopy "$(ProjectDir)bin\$(ConfigurationName)" "$(SolutionDir)bin\$(ConfigurationName)\$(ProjectName)"</PostBuildEvent>
   </PropertyGroup>
 </Project>
