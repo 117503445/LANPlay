@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KeySend_Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="KeySend-Client" Height="173.831" Width="320.713" Loaded="Window_Loaded">
     <Grid>
-        
+        <CheckBox Name="CkbHook" Content="拦截键盘" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="27,24,0,0" Click="CkbHook_Click"/>
+        <Button Name="BtnBlack" Content="没屌用" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="27,76,0,0"/>
+
     </Grid>
 </Window>
