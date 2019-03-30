@@ -30,35 +30,31 @@ namespace KeySend_Server
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Dictionary<Key, Key> d = new Dictionary<Key, Key>();
-            d.Add(Key.W,Key.Q);
-            User.Users.Add(new User() { IP="hello",});
-            foreach (var user in User.Users)
-            {
-                Console.WriteLine(user);
-            }
 
+            User.CreateTestData();
 
-            var udp = new UdpClient(804);
+            var udp = new UdpClient(800);
             Task.Run(async () =>
-            {
-                while (true)
-                {
-                    var result = await udp.ReceiveAsync();
-                    string ip = result.RemoteEndPoint.Address.ToString();
-                    Key sendKey = (Key)result.Buffer[1];
-                    if (result.Buffer[0] == 0)
                     {
-                        KeyboardSimulation.Press(sendKey);
-                    }
-                    else
-                    {
-                        KeyboardSimulation.Release(sendKey);
-                    }
-                    //Console.WriteLine(sendKey);
-                    Console.WriteLine(ip);
-                }
-            });
+                        while (true)
+                        {
+                            var result = await udp.ReceiveAsync();
+                            string ip = result.RemoteEndPoint.Address.ToString();
+                            Key sendKey = (Key)result.Buffer[1];
+                            Key? k = User.MapKey(ip, sendKey);
+                            if (k != null && User.IsAllowKey(ip, sendKey))
+                            {
+                                if (result.Buffer[0] == 0)
+                                {
+                                    KeyboardSimulation.Press((Key)k);
+                                }
+                                else
+                                {
+                                    KeyboardSimulation.Release((Key)k);
+                                }
+                            }
+                        }
+                    });
         }
     }
 }
