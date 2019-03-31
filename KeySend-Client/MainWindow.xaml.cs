@@ -21,7 +21,7 @@ namespace KeySend_Client
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IDisposable
     {
         public MainWindow()
         {
@@ -59,6 +59,11 @@ namespace KeySend_Client
             {
                 keyboardHook.IsHoldKey = (bool)CkbHook.IsChecked;
             }
+        }
+
+        public void Dispose()
+        {
+            udp.Dispose();
         }
     }
 }

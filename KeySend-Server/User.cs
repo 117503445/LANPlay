@@ -39,7 +39,7 @@ namespace KeySend_Server
             {
                 IP = "192.168.1.248",
                 KeyMap = new Dictionary<Key, Key>{
-                {W,O},{A,P},{S,F},{D,G},{J,H},{K,Z},{L,X}
+                {W,O},{A,NumPad9},{S,F},{D,G},{J,H},{K,Z},{L,X}
                 },
                 KeyAllow = keys,
                 Name = "JJY"

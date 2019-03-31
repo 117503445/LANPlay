@@ -35,26 +35,35 @@ namespace KeySend_Server
 
             var udp = new UdpClient(800);
             Task.Run(async () =>
+            {
+                while (true)
+                {
+                    var result = await udp.ReceiveAsync();
+                    string ip = result.RemoteEndPoint.Address.ToString();
+                    Key sendKey = (Key)result.Buffer[1];
+                    Key? k = User.MapKey(ip, sendKey);
+                    if (k != null && User.IsAllowKey(ip, sendKey))
                     {
-                        while (true)
+                        if (result.Buffer[0] == 0)
                         {
-                            var result = await udp.ReceiveAsync();
-                            string ip = result.RemoteEndPoint.Address.ToString();
-                            Key sendKey = (Key)result.Buffer[1];
-                            Key? k = User.MapKey(ip, sendKey);
-                            if (k != null && User.IsAllowKey(ip, sendKey))
-                            {
-                                if (result.Buffer[0] == 0)
-                                {
-                                    KeyboardSimulation.Press((Key)k);
-                                }
-                                else
-                                {
-                                    KeyboardSimulation.Release((Key)k);
-                                }
-                            }
+                            KeyboardSimulation.Press((Key)k);
                         }
-                    });
+                        else
+                        {
+                            KeyboardSimulation.Release((Key)k);
+                        }
+                    }
+                }
+            });
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var i = MessageBox.Show("Exit ?", "Exiting", MessageBoxButton.OKCancel);
+            if (i == MessageBoxResult.Cancel)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

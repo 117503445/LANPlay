@@ -16,6 +16,7 @@
             if (disposing && (components != null))
             {
                 components.Dispose();
+                Udp.Dispose();
             }
             base.Dispose(disposing);
         }
