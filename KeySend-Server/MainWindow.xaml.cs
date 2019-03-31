@@ -25,13 +25,10 @@ namespace KeySend_Server
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-            User.CreateTestData();
 
             var udp = new UdpClient(800);
             Task.Run(async () =>

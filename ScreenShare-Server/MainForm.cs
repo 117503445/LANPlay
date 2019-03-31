@@ -16,9 +16,12 @@ namespace ScreenShare_Server
     public partial class MainForm : Form
     {
         private readonly IRDPSRAPIInvitation invitation;
+        private readonly Resolution reso;
         public MainForm()
         {
             InitializeComponent();
+
+            reso = new Resolution();
 
             var rdp = new RDPSession();
             rdp.OnAttendeeConnected += Rdp_OnAttendeeConnected;
@@ -39,7 +42,7 @@ namespace ScreenShare_Server
             {
                 if (ip[0] != '#')
                 {
-                    Text += " " + ip;
+                    LbIP.Items.Add(" " + ip);
                 }
             }
         }
@@ -55,7 +58,7 @@ namespace ScreenShare_Server
 
         private void BtnCast_Click(object sender, EventArgs e)
         {
-            
+
             foreach (var ip in Program.Ips)
             {
                 if (ip[0] == '#')
@@ -64,6 +67,18 @@ namespace ScreenShare_Server
                 }
                 byte[] b = Encoding.Default.GetBytes(invitation.ConnectionString);
                 Udp.Send(b, b.Length, ip, 900);
+            }
+        }
+
+        private void BtnChange_Click(object sender, EventArgs e)
+        {
+            if (Screen.PrimaryScreen.Bounds.Width != 1280)
+            {
+                reso.ChangeResolution(1280, 720);
+            }
+            else
+            {
+                reso.ChangeResolution(reso.autoWidth, reso.autoHeight);
             }
         }
     }
