@@ -38,8 +38,10 @@ namespace KeySend_Server
                     var result = await udp.ReceiveAsync();
                     string ip = result.RemoteEndPoint.Address.ToString();
                     Key sendKey = (Key)result.Buffer[1];
-                    Key? k = User.MapKey(ip, sendKey);
-                    if (k != null && User.IsAllowKey(ip, sendKey))
+                    //Key? k = User.MapKey(ip, sendKey);
+                    //if (k != null && User.IsAllowKey(ip, sendKey))
+                    var k = sendKey;
+                    if (true)
                     {
                         if (result.Buffer[0] == 0)
                         {
