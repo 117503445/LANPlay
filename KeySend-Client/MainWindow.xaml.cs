@@ -41,14 +41,15 @@ namespace KeySend_Client
 
         private void KeyboardHook_OnKeyDown(object sender, KeyboardHookEventArgs e)
         {
-            byte[] bytes = new byte[] { 0, (byte)Convert.ToInt32(e.key) };
+            
+            byte[] bytes = new byte[] { 0, (byte)Convert.ToInt32(e.Key) };
             udp.Send(bytes, bytes.Length, App.IP, 800);
             Console.WriteLine($"Send {bytes[0]} {bytes[1]}");
         }
 
         private void KeyboardHook_OnKeyUp(object sender, KeyboardHookEventArgs e)
         {
-            byte[] bytes = new byte[] { 1, (byte)Convert.ToInt32(e.key) };
+            byte[] bytes = new byte[] { 1, (byte)Convert.ToInt32(e.Key) };
             udp.Send(bytes, bytes.Length, App.IP, 800);
             Console.WriteLine($"Send {bytes[0]} {bytes[1]}");
         }
